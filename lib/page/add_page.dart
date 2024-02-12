@@ -48,10 +48,10 @@ class _AddPageState extends State<AddPage> {
             children: [
               CustomWidget.textField(
                   context, 'Title', titleControl, TextInputAction.next, 1),
-              const SizedBox(height: 16.0),
+              CustomWidget.space(context, 0.02, 0),
               CustomWidget.textField(context, 'Description', descControl,
                   TextInputAction.done, 10),
-              const SizedBox(height: 24.0),
+              CustomWidget.space(context, 0.02, 0),
               ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor:

@@ -22,8 +22,7 @@ class _TodoItemState extends State<TodoItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color:
-          widget.todo.status == 1 ? Colors.green.shade50 : Colors.white,
+      color: widget.todo.status == 1 ? Colors.green.shade50 : Colors.white,
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 12),
         leading: Checkbox(
@@ -48,7 +47,10 @@ class _TodoItemState extends State<TodoItem> {
           mainAxisSize: MainAxisSize.min,
           children: [
             GestureDetector(
-                onTap: widget.onEdit, child: const Icon(Icons.edit_rounded)),
+                onTap: widget.onEdit,
+                child: Icon(Icons.edit_rounded,
+                    color:
+                        widget.todo.status == 1 ? Colors.transparent : null)),
             CustomWidget.space(context, 0, 0.04),
             GestureDetector(
                 onTap: widget.onDelete,
