@@ -63,14 +63,14 @@ class _EditPageState extends State<EditPage> {
                             titleController..text = todoData.title,
                             TextInputAction.next,
                             1),
-                        const SizedBox(height: 16.0),
+                        CustomWidget.space(context, 0.02, 0),
                         CustomWidget.textField(
                             context,
                             'Description',
                             descController..text = todoData.desc,
                             TextInputAction.done,
                             10),
-                        const SizedBox(height: 24.0),
+                        CustomWidget.space(context, 0.02, 0),
                         ElevatedButton(
                           style: ButtonStyle(
                             backgroundColor:
