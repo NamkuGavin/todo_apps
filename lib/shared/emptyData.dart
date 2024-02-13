@@ -7,7 +7,7 @@ class EmptyData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 50),
+      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_list/db.dart';
 import 'package:todo_list/page/add_page.dart';
+import 'package:todo_list/page/detail_page.dart';
 import 'package:todo_list/page/edit_page.dart';
 import 'package:todo_list/shared/emptyData.dart';
 import 'package:todo_list/shared/homeTop.dart';
@@ -118,6 +119,17 @@ class _HomePageState extends State<HomePage> {
                                       await todoDatabase
                                           .delete(todos[index].id!);
                                       setState(() {});
+                                    },
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => DetailPage(
+                                                  titleTodo: todos[index].title,
+                                                  descTodo: todos[index]
+                                                      .desc))).then((_) {
+                                        setState(() {});
+                                      });
                                     },
                                   );
                                 }),

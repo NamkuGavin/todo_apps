@@ -42,4 +42,10 @@ class CustomWidget {
       SvgPicture.asset("assets/icon/no_data_icon.svg",
           width: MediaQuery.of(context).size.width * width,
           height: MediaQuery.of(context).size.height * height);
+
+  static SvgPicture uploadImg(
+          BuildContext context, double width, double height) =>
+      SvgPicture.asset("assets/icon/upload_img_icon.svg",
+          width: MediaQuery.of(context).size.width * width,
+          height: MediaQuery.of(context).size.height * height);
 }
