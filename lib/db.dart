@@ -36,7 +36,8 @@ CREATE TABLE $tableTodo (
   ${TodoFields.id} $idType,
   ${TodoFields.title} $textType,
   ${TodoFields.desc} $textType,
-  ${TodoFields.status} $integerType DEFAULT 0
+  ${TodoFields.status} $integerType DEFAULT 0,
+  ${TodoFields.image} $textType
   )
 ''');
   }
