@@ -126,8 +126,9 @@ class _HomePageState extends State<HomePage> {
                                           MaterialPageRoute(
                                               builder: (context) => DetailPage(
                                                   titleTodo: todos[index].title,
-                                                  descTodo: todos[index]
-                                                      .desc))).then((_) {
+                                                  descTodo: todos[index].desc,
+                                                  imageTodo: todos[index]
+                                                      .image,))).then((_) {
                                         setState(() {});
                                       });
                                     },
