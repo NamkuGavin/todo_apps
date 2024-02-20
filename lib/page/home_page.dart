@@ -22,6 +22,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String time = DateFormat('kk:mm').format(DateTime.now());
   String date = DateFormat('EEEE, d MMMM y').format(DateTime.now());
+  DateTime scheduleTime = DateTime.now();
   final todoDatabase = TodoDatabase.instance;
   late Timer timer;
 
@@ -35,6 +36,7 @@ class _HomePageState extends State<HomePage> {
   void update() {
     setState(() {
       time = DateFormat('kk:mm').format(DateTime.now());
+      scheduleTime = DateTime.now();
     });
   }
 
@@ -125,10 +127,12 @@ class _HomePageState extends State<HomePage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) => DetailPage(
-                                                  titleTodo: todos[index].title,
-                                                  descTodo: todos[index].desc,
-                                                  imageTodo: todos[index]
-                                                      .image,))).then((_) {
+                                                    titleTodo:
+                                                        todos[index].title,
+                                                    descTodo: todos[index].desc,
+                                                    imageTodo:
+                                                        todos[index].image,
+                                                  ))).then((_) {
                                         setState(() {});
                                       });
                                     },

@@ -4,6 +4,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:todo_list/shared/datepicker.dart';
 import 'package:todo_list/shared/widget.dart';
 
 import '../db.dart';
@@ -22,6 +23,8 @@ class _AddPageState extends State<AddPage> {
   final todoDatabase = TodoDatabase.instance;
   TodoList? todo;
   File? image;
+  bool checkTitle = false;
+  bool checkDesc = false;
 
   Future imageGallery(BuildContext context) async {
     final ImagePicker picker = ImagePicker();
@@ -98,8 +101,8 @@ class _AddPageState extends State<AddPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              CustomWidget.textField(
-                  context, 'Title', titleControl, TextInputAction.next, 1),
+              CustomWidget.textField(context, 'Title', titleControl,
+                  TextInputAction.next, 1, checkTitle),
               CustomWidget.space(context, 0.02, 0),
               Center(
                 child: image != null
@@ -167,21 +170,29 @@ class _AddPageState extends State<AddPage> {
               ),
               CustomWidget.space(context, 0.02, 0),
               CustomWidget.textField(context, 'Description', descControl,
-                  TextInputAction.done, 10),
+                  TextInputAction.done, 10, checkDesc),
               CustomWidget.space(context, 0.02, 0),
+              // DatePickerPage(scheduleTime: scheduleTime),
               ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all(Colors.red.shade300),
                 ),
                 onPressed: () async {
-                  final todo = TodoList(
-                    title: titleControl.text,
-                    desc: descControl.text,
-                    image: image == null ? '' : image!.path,
-                  );
-                  await todoDatabase.create(todo);
-                  if (context.mounted) Navigator.pop(context);
+                  if (descControl.text.isEmpty || titleControl.text.isEmpty) {
+                    setState(() {
+                      checkDesc = descControl.text.isEmpty;
+                      checkTitle = titleControl.text.isEmpty;
+                    });
+                  } else {
+                    final todo = TodoList(
+                      title: titleControl.text,
+                      desc: descControl.text,
+                      image: image == null ? '' : image!.path,
+                    );
+                    await todoDatabase.create(todo);
+                    if (context.mounted) Navigator.pop(context);
+                  }
                 },
                 child: const Text(
                   'Save',

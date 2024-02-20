@@ -127,7 +127,8 @@ class _EditPageState extends State<EditPage> {
                             'Title',
                             titleController..text = todoData.title,
                             TextInputAction.next,
-                            1),
+                            1,
+                            false),
                         CustomWidget.space(context, 0.02, 0),
                         Center(
                           child: image != null && todoData.image != ''
@@ -206,7 +207,8 @@ class _EditPageState extends State<EditPage> {
                             'Description',
                             descController..text = todoData.desc,
                             TextInputAction.done,
-                            10),
+                            10,
+                            false),
                         CustomWidget.space(context, 0.02, 0),
                         ElevatedButton(
                           style: ButtonStyle(
