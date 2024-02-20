@@ -13,14 +13,26 @@ class CustomWidget {
           String hint,
           TextEditingController controller,
           TextInputAction? inputAction,
-          int maxLines) =>
-      TextField(
+          int maxLines,
+          bool validate) =>
+      TextFormField(
         controller: controller,
         maxLines: maxLines,
         textInputAction: inputAction,
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: TextStyle(color: Colors.grey.shade400),
+          errorText: validate ? "field ini tidak bisa kosong" : null,
+          errorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.red),
+              borderRadius: BorderRadius.circular(20.0)),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+            borderSide: BorderSide(
+              color: Colors.red.shade700,
+              width: 2.0,
+            ),
+          ),
           enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.grey),
               borderRadius: BorderRadius.circular(20.0)),
